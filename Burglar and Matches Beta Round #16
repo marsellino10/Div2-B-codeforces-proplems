@@ -1,0 +1,57 @@
+#include <iostream>     // std::cout
+#include <algorithm>    // std::transform
+#include <vector>       // std::vector
+#include <functional>
+#include <cstring>
+#include <cmath>
+#include <math.h>
+#include <iomanip>
+#include <string.h>
+ 
+using namespace std;
+int find_max(unsigned int *arr,unsigned int siz)
+{
+    unsigned int maxi=0,index;
+    for(unsigned int i=0;i<siz;i++)
+    {
+            if(arr[i]>maxi)
+            {
+                maxi = arr[i];
+                index = i;
+            }
+    }
+    return index;
+}
+int main()
+{
+     unsigned int n,m;
+     int ind;
+     unsigned long long res=0;
+     cin>>n>>m;
+     unsigned int *box = new unsigned int[m];
+     unsigned int *matches = new unsigned int[m];
+ 
+     for(unsigned int i=0;i<m;i++)
+     {
+         cin>>box[i]>>matches[i];
+     }
+     while(n!=0)
+     {
+        ind = find_max(matches,m);
+        int temp = n-box[ind];
+         if(temp >= 0)
+         {
+           n = n - box[ind];
+           res+=(box[ind] * matches[ind]);
+           matches[ind] = 0;
+         }
+         else
+         {
+             res+=(n * matches[ind]);
+             n=0;
+         }
+ 
+     }
+     cout<<res;
+    return 0;
+}
