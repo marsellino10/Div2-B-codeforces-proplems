@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+ 
+int main()
+{
+    int n,energy=0,dollars=0,temp=0,neg;
+    scanf("%d",&n);
+    int *arr = (int *)malloc((n+1) * sizeof(int));
+    arr[0] = 0;
+    for(int i=1;i<(n+1);i++)
+    {
+       scanf("%d",&arr[i]);
+    }
+ 
+    for(int i=0;i<n;i++)
+    {
+       temp = arr[i]-arr[i+1];
+        neg = -temp;
+       if(temp >= 0)
+        {
+            energy += temp;
+        }
+       else
+       {
+           if(neg <= energy)
+           {
+               energy -= neg;
+           }
+ 
+           else
+           {
+               neg -= energy;
+               energy = 0;
+               dollars += neg;
+           }
+ 
+       }
+    }
+    printf("%d",dollars);
+    return 0;
+}
