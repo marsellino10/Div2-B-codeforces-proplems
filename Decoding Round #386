@@ -1,0 +1,62 @@
+#include <iostream>     // std::cout
+#include <algorithm>    // std::transform
+#include <vector>       // std::vector
+#include <functional>
+#include <cstring>
+#include <cmath>
+#include <math.h>
+#include <iomanip>
+#include <string.h>
+#include <sstream>
+#include<bits/stdc++.h>
+typedef long long ll;
+using namespace std;
+ 
+int main()
+{
+    int n,index,odd=1,even=1;
+    cin>>n;
+    string s;
+    cin>>s;
+    char res[n+1];
+    index = ceil((double)n/2);
+    res[index-1] = s[0];
+    if(n%2 != 0)
+    {
+        for(int i=1;i<n;i++)
+    {
+        if(i%2 !=0)
+        {
+            res[index-1-odd] = s[i];
+            odd++;
+        }
+        else if(i%2 ==0)
+        {
+            res[index-1+even] = s[i];
+            even++;
+        }
+    }
+    }
+    else
+    {
+        for(int i=1;i<n;i++)
+      {
+        if(i%2 !=0)
+        {
+            res[index-1+even] = s[i];
+            even++;
+        }
+        else if(i%2 ==0)
+        {
+ 
+            res[index-1-odd] = s[i];
+            odd++;
+        }
+    }
+    }
+    for(int i=0;i<n;i++)
+    {
+        cout<<res[i];
+    }
+    return 0;
+}
